@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/phone4u/static/css/main.f9f56d3d.css",
+    "main.js": "/phone4u/static/js/main.5d4463e4.js",
+    "static/media/logo.svg": "/phone4u/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/phone4u/index.html",
+    "main.f9f56d3d.css.map": "/phone4u/static/css/main.f9f56d3d.css.map",
+    "main.5d4463e4.js.map": "/phone4u/static/js/main.5d4463e4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f9f56d3d.css",
+    "static/js/main.5d4463e4.js"
+  ]
+}
