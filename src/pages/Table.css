@@ -1,0 +1,24 @@
+.phone-table{
+   border: 0.5px;
+   background-color: white;
+   padding: 3px;
+}
+
+.phone-table th{
+    background-color: rgba(21, 85, 121, 0.96);
+    /* color: white; */
+}
+
+.phone-table th:first-child{
+    border-radius: 10px 0 0 0;
+}
+.phone-table th:last-child{
+    border-radius: 0 10px 0 0;
+}
+
+.table>:not(caption)>*>* {
+    padding: 0.5rem 0.5rem;
+    background-color: white;
+    border-bottom-width: 1px;
+    box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+}

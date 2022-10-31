@@ -37,96 +37,124 @@ const DUMMY_PHONES = [
   },
 ];
 
-const EditPhone = () => {
-  const phoneId = "p1";
+const EditPhone = (props) => {
+  const phoneId = props.id;
+  console.log("props",props.id)
+  console.log("phone",phoneId)
   //  const phoneId = useParams().phoneId;
-
-  
-  
-
-  const [formState,inputHandler, setFormData] = useForm(
+  const [formState, inputHandler, setFormData] = useForm(
     {
       name: {
-        id: 'name',
+        id: "name",
         value: "",
         isValid: false,
       },
       image: {
-        id: 'image',
+        id: "image",
         value: "",
         isValid: false,
       },
       price: {
-        id: 'price',
+        id: "price",
         value: "",
         isValid: false,
       },
       portfolio: {
-        id: 'portfolio',
+        id: "portfolio",
         value: "",
         isValid: false,
       },
       brand: {
-        id: 'brand',
+        id: "brand",
         value: "",
         isValid: false,
-      },
-
-}, false
-  );
-
-  const identifiedPhone = DUMMY_PHONES.find((p) => p.id === phoneId);
-  
-  useEffect(() =>{
-  setFormData({
-    
-      name: {
-        value: identifiedPhone.name,
-        isValid: true
-      },
-      image: {
-        value: identifiedPhone.image,
-        isValid: true
-      },
-      price: {
-        value: identifiedPhone.price,
-        isValid: true
-      },
-      portfolio: {
-        value: identifiedPhone.portfolio,
-        isValid: true
-      },
-      brand: {
-        value: identifiedPhone.brand,
-        isValid: true
       },
     },
-   true
-   );
-  }, [setFormData, identifiedPhone]);
-
-    const phoneEditsubmitHandler = event =>{
-      event.preventDefault();
-      console.log(formState.inputs,'form');
-    }
-
-  if (!identifiedPhone) {
-    return (
-      <div className="center">
-        <h2>Could not find phone!</h2>
-      </div>
+    false
+  );
+  let identifiedPhone;
+  const getPhoneData = async () => {
+    const result = await fetch('http://localhost:5000/api/phones/'+"635edd828bcb20d902fe4643");
+    identifiedPhone = await result.json().phone;
+    console.log(identifiedPhone)
+    setFormData(
+      {
+        name: {
+          value: identifiedPhone.name,
+          isValid: true,
+        },
+        image: {
+          value: identifiedPhone.image,
+          isValid: true,
+        },
+        price: {
+          value: identifiedPhone.price,
+          isValid: true,
+        },
+        portfolio: {
+          value: identifiedPhone.portfolio,
+          isValid: true,
+        },
+        brand: {
+          value: identifiedPhone.brand,
+          isValid: true,
+        },
+      },
+      true
     );
-  }
+  };
 
-  if (!formState.inputs.name.value ) {
-    return(
-      <div className="center">
-        <h2>Could not find phone!</h2>
-      </div>
-    );
+  const postPhoneData =async()=>{
+  console.log("form");
+    const result = await fetch('http://localhost:5000/api/phones/'+"635edd828bcb20d902fe4643",{
+      method:"PATCH",
+      headers:{
+
+                'Content-Type': 'application/json',
+      },
+      body:JSON.stringify({
+        name: formState.inputs.name.value,
+        image:formState.inputs.image.value,
+        price:formState.inputs.price.value,
+        portfolio:formState.inputs.portfolio.value,
+        brand:formState.inputs.brand.id
+      })
+
+    })
+    console.log("not done")
+    const updatedphone = await result.JSON().phone
+    console.log(updatedphone)
+
+
   }
+  useEffect(() => {
+    getPhoneData();
+  }, [getPhoneData]);
+
+  const phoneEditsubmitHandler = (event) => {
+    event.preventDefault();
+    //console.log(formState.inputs, "form");
+    postPhoneData()
+  console.log("done");
+
+  };
+
+  // if (!identifiedPhone) {
+  //   return (
+  //     <div className="center">
+  //       <h2>Could not find phone!</h2>
+  //     </div>
+  //   );
+  // }
+
+  // if (!formState.inputs.name.value) {
+  //   return (
+  //     <div className="center">
+  //       <h2>Could not find phone!</h2>
+  //     </div>
+  //   );
+  // }
   return (
-    
     <form className="phone-add-form" onSubmit={phoneEditsubmitHandler}>
       <Input
         id="name"
@@ -163,7 +191,7 @@ const EditPhone = () => {
       ></Input>
       <Input
         id="portfolio"
-        element="textArea"
+        element="input"
         type="number"
         label="PortFolio Name"
         validators={[VALIDATOR_REQUIRE()]}
@@ -183,7 +211,9 @@ const EditPhone = () => {
         value={formState.inputs.brand.value}
         valid={formState.inputs.brand.isValid}
       ></Input>
-      <Button type="Submit" disabled = {!formState.isValid}>Edit Phone</Button>
+      <Button type="Submit" disabled={!formState.isValid}>
+        Edit Phone
+      </Button>
     </form>
   );
 };

@@ -36,10 +36,34 @@ const NewPhone = () => {
     },
     false
   );
+  const postPhoneData =async()=>{
+    console.log("form");
+      const result = await fetch('http://localhost:5000/api/phones',{
+        method:"POST",
+        headers:{
+  
+                  'Content-Type': 'application/json',
+        },
+        body:JSON.stringify({
+          name: formState.inputs.name.value,
+          image:formState.inputs.image.value,
+          price:formState.inputs.price.value,
+          portfolio:formState.inputs.portfolio.value,
+          brand:formState.inputs.brand.id
+        })
+  
+      })
+      //console.log("not done")
+      const updatedphone = await result.JSON().phone
+      console.log(updatedphone)
+  
+  
+    }
 
   const phoneSubmitHandler = (event) => {
     event.preventDefault();
-    console.log(formState.inputs,'form'); // send to the backend
+    postPhoneData()
+    //console.log(formState.inputs,'form'); // send to the backend
   };
 
   return (
@@ -73,7 +97,7 @@ const NewPhone = () => {
       ></Input>
       <Input
         id="portfolio"
-        element="textArea"
+        element="input"
         type="number"
         label="PortFolio Name"
         validators={[VALIDATOR_REQUIRE()]}

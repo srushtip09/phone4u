@@ -1,4 +1,4 @@
-.phone-add-form {
+ /* .phone-add-form {
     list-style: none;
     margin: 0 auto;
     padding: 1rem;
@@ -7,5 +7,50 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     border-radius: 6px;
     background: rgb(251, 248, 248);
-  }
-  
+  } */
+
+  /* .phone-add-form {
+    list-style: none;
+    margin: 0 auto;
+    padding: 1rem;
+    width: 90%;
+    max-width: 40rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 6px;
+    background: rgb(251, 248, 248);
+  } */
+   
+   /* phone-add-form{
+    width: 90%;
+    max-width: 600px;
+}
+
+input, textarea, list{
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+background: #FFFFFF;
+border-radius: 10px;
+
+}
+label{
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 10px;
+    color: black;
+    cursor: text;
+    transition: 0.2s;
+}
+button{
+    padding: 10px 0;
+    padding: 10px 0; 
+    outline: none;
+background: #113448;
+opacity: 0.85;
+border-radius: 5px;
+color:white;
+    
+} */

@@ -1,14 +1,17 @@
 .button {
   font: inherit;
   padding: 0.5rem 1.5rem;
-  border: 1px solid #ff0055;
+  border: 1px solid rgba(17, 52, 72, 1);
   border-radius: 4px;
-  background: #ff0055;
+  background: rgba(17, 52, 72, 1);
   color: white;
   cursor: pointer;
   margin-right: 1rem;
   text-decoration: none;
   display: inline-block;
+  position:relative;
+left : 35%;
+
 }
 
 .button:focus {
@@ -17,19 +20,19 @@
 
 .button:hover,
 .button:active {
-  background: #ff4382;
-  border-color: #ff4382;
+  background: rgba(17, 52, 72, 1);
+  border-color: rgba(17, 52, 72, 1);
 }
 
 .button--inverse {
   background: transparent;
-  color: #ff0055;
+  color: rgba(17, 52, 72, 1);
 }
 
 .button--inverse:hover,
 .button--inverse:active {
   color: white;
-  background: #ff0055;
+  background: rgba(17, 52, 72, 1);
 }
 
 .button--danger {
