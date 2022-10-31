@@ -1,0 +1,191 @@
+import React, { useEffect } from "react";
+//import { useParams } from "react-router-dom";
+
+import Input from "../Components/Addphone/Input";
+import "./PhoneForm.css";
+import Button from "../Components/Addphone/Button";
+import { VALIDATOR_REQUIRE } from "../Components/Addphone/validators";
+import { useForm } from "../Components/hooks/forms";
+
+const DUMMY_PHONES = [
+  {
+    id: "p1",
+    name: "Realme 3g",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
+    price: "20889",
+    portfolio: "u1csjklsdkjfpojkmeoijomcdlkdm hgdskjhnk,masdkl",
+    brand: "62",
+  },
+  {
+    id: "p1",
+    name: "Realme 3g",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
+    price: "20889",
+    portfolio: "u1csjklsdkjfpojkmeoijomcdlkdm hgdskjhnk,masdkl",
+    brand: "62",
+  },
+  {
+    id: "p1",
+    name: "Realme 3g",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
+    price: "20889",
+    portfolio: "u1csjklsdkjfpojkmeoijomcdlkdm hgdskjhnk,masdkl",
+    brand: "62",
+  },
+];
+
+const EditPhone = () => {
+  const phoneId = "p1";
+  //  const phoneId = useParams().phoneId;
+
+  
+  
+
+  const [formState,inputHandler, setFormData] = useForm(
+    {
+      name: {
+        id: 'name',
+        value: "",
+        isValid: false,
+      },
+      image: {
+        id: 'image',
+        value: "",
+        isValid: false,
+      },
+      price: {
+        id: 'price',
+        value: "",
+        isValid: false,
+      },
+      portfolio: {
+        id: 'portfolio',
+        value: "",
+        isValid: false,
+      },
+      brand: {
+        id: 'brand',
+        value: "",
+        isValid: false,
+      },
+
+}, false
+  );
+
+  const identifiedPhone = DUMMY_PHONES.find((p) => p.id === phoneId);
+  
+  useEffect(() =>{
+  setFormData({
+    
+      name: {
+        value: identifiedPhone.name,
+        isValid: true
+      },
+      image: {
+        value: identifiedPhone.image,
+        isValid: true
+      },
+      price: {
+        value: identifiedPhone.price,
+        isValid: true
+      },
+      portfolio: {
+        value: identifiedPhone.portfolio,
+        isValid: true
+      },
+      brand: {
+        value: identifiedPhone.brand,
+        isValid: true
+      },
+    },
+   true
+   );
+  }, [setFormData, identifiedPhone]);
+
+    const phoneEditsubmitHandler = event =>{
+      event.preventDefault();
+      console.log(formState.inputs,'form');
+    }
+
+  if (!identifiedPhone) {
+    return (
+      <div className="center">
+        <h2>Could not find phone!</h2>
+      </div>
+    );
+  }
+
+  if (!formState.inputs.name.value ) {
+    return(
+      <div className="center">
+        <h2>Could not find phone!</h2>
+      </div>
+    );
+  }
+  return (
+    
+    <form className="phone-add-form" onSubmit={phoneEditsubmitHandler}>
+      <Input
+        id="name"
+        element="input"
+        type="text"
+        label="Phone Name"
+        validators={[VALIDATOR_REQUIRE()]}
+        errorText="Please enter a valid input"
+        onInput={inputHandler}
+        value={formState.inputs.name.value}
+        valid={formState.inputs.name.isValid}
+      ></Input>
+      <Input
+        id="image"
+        element="input"
+        type="text"
+        label="Image Url"
+        validators={[VALIDATOR_REQUIRE()]}
+        errorText="Please enter a valid input"
+        onInput={inputHandler}
+        value={formState.inputs.image.value}
+        valid={formState.inputs.image.isValid}
+      ></Input>
+      <Input
+        id="price"
+        element="input"
+        type="number"
+        label="Price"
+        validators={[VALIDATOR_REQUIRE()]}
+        errorText="Please enter a valid input"
+        onInput={inputHandler}
+        value={formState.inputs.price.value}
+        valid={formState.inputs.price.isValid}
+      ></Input>
+      <Input
+        id="portfolio"
+        element="textArea"
+        type="number"
+        label="PortFolio Name"
+        validators={[VALIDATOR_REQUIRE()]}
+        errorText="Please enter a valid input"
+        onInput={inputHandler}
+        value={formState.inputs.portfolio.value}
+        valid={formState.inputs.portfolio.isValid}
+      ></Input>
+      <Input
+        id="brand"
+        element="input"
+        type="number"
+        label="Brand"
+        validators={[VALIDATOR_REQUIRE()]}
+        errorText="Please enter a valid input"
+        onInput={inputHandler}
+        value={formState.inputs.brand.value}
+        valid={formState.inputs.brand.isValid}
+      ></Input>
+      <Button type="Submit" disabled = {!formState.isValid}>Edit Phone</Button>
+    </form>
+  );
+};
+
+export default EditPhone;
