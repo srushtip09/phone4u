@@ -1,24 +1,53 @@
 .phone-table{
-   border: 0.5px;
-   background-color: white;
-   padding: 3px;
-}
+    background: #FFFFFF;
+    border: 1px solid #113448;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 20px 0px;
 
+}
+.phone-table thead{
+    background: rgba(21, 85, 121, 0.96);
+}
+.phone-table th:first-child{
+    border: 1px solid #CCCCCC;
+    border-radius: 20px 0px 0px 0px;
+}
+.phone-table thead:last-child{
+    border: 1px solid #CCCCCC;
+    border-radius: 20px 0px 0px 0px;
+}
 .phone-table th{
-    background-color: rgba(21, 85, 121, 0.96);
+    background: rgba(21, 85, 121, 0.96);
+    flex-direction: row;
+    align-items: center;
+    padding: 16px;
+    gap: 10px; 
+    width: 145px;
+    height: 59px;
+   
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
     /* color: white; */
 }
 
-.phone-table th:first-child{
-    border-radius: 10px 0 0 0;
-}
-.phone-table th:last-child{
-    border-radius: 0 10px 0 0;
+.phone-table td{
+        flex-direction: row;
+        align-items: center;
+        padding: 16px 19px 16px 16px;
+        gap: 10px;
+        
+        width: 142px;
+        height: 59px;
+        
+        background: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        
+        /* Inside auto layout */
+        
+        flex: none;
+        order: 1;
+        flex-grow: 0;
 }
 
-.table>:not(caption)>*>* {
-    padding: 0.5rem 0.5rem;
-    background-color: white;
-    border-bottom-width: 1px;
-    box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
-}

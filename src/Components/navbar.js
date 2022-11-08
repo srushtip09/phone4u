@@ -1,23 +1,24 @@
-// import React from 'react';
-// import { NavLink } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import 'bootstrap/dist/css/bootstrap.css';
 
-// import './navbar.css';
+function ColorSchemesExample() {
+  return (
+    <>
+      <Navbar className="d-flex justify-content-end bg-primary" bg="dark" variant="dark">
+        <Container >
+          <Nav className="d-flex justify-content-end me-auto">
+          <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#home">TechQuickie</Nav.Link>
+            <Nav.Link href="#features">About</Nav.Link>
+            <Nav.Link href="#pricing">Get Started</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
+      <br />
+    </>
+  );
+}
 
-// const navbar = props => {
-//   return <ul className="nav-links">
-//     <li>
-//       <NavLink to="/" exact>ALL USERS</NavLink>
-//     </li>
-//     <li>
-//       <NavLink to="/u1/places">MY PLACES</NavLink>
-//     </li>
-//     <li>
-//       <NavLink to="/places/new">ADD PLACE</NavLink>
-//     </li>
-//     <li>
-//       <NavLink to="/auth">AUTHENTICATE</NavLink>
-//     </li>
-//   </ul>
-// };
-
-// export default navbar;
+export default ColorSchemesExample;

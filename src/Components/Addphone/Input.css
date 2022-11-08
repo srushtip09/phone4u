@@ -72,7 +72,9 @@ border-radius: 10px;
 outline: none;
 border-color:white;
   }
-  
+  .form-control {
+    border: none !important; 
+  }
   .form-control input:focus,
   .form-control textarea:focus {
     outline: none;
@@ -90,3 +92,30 @@ border-color:white;
     border-color: red;
     background: #ffd1d1;
   }
+
+  .card1{
+    box-sizing: border-box;
+
+left: 4.86%;
+right: 4.93%;
+top: 17.68%;
+bottom: 10.09%;
+
+background: #FFFFFF;
+border: 1px solid #AAAAAA;
+border-radius: 20px;
+  
+  }
+
+
+.cardh
+{ 
+background: #113448;
+opacity: 0.85;
+border-radius: 20px 20px 0px 0px;
+}
+
+.txt1{
+  color:white;
+  padding-left: 20px;
+}

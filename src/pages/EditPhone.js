@@ -3,9 +3,11 @@ import React, { useEffect } from "react";
 
 import Input from "../Components/Addphone/Input";
 import "./PhoneForm.css";
+
 import Button from "../Components/Addphone/Button";
 import { VALIDATOR_REQUIRE } from "../Components/Addphone/validators";
 import { useForm } from "../Components/hooks/forms";
+import axios from "axios";
 
 const DUMMY_PHONES = [
   {
@@ -74,7 +76,8 @@ const EditPhone = (props) => {
   );
   let identifiedPhone;
   const getPhoneData = async () => {
-    const result = await fetch('http://localhost:5000/api/phones/'+"635edd828bcb20d902fe4643");
+    //const result = await fetch('http://localhost:5000/api/phones/'+"635edd828bcb20d902fe4643");
+    const result = await axios.get("http://localhost:5000/api/phones/")
     identifiedPhone = await result.json().phone;
     console.log(identifiedPhone)
     setFormData(
@@ -155,6 +158,15 @@ const EditPhone = (props) => {
   //   );
   // }
   return (
+    <div className="container">
+    <div className="row">
+    <div className="col-md-12">
+      <div className="card1">
+    <div className="cardh" >
+      <h2><div className="txt1">Edit Phone</div></h2>
+    </div>
+    <div>
+    <div className="card-body">
     <form className="phone-add-form" onSubmit={phoneEditsubmitHandler}>
       <Input
         id="name"
@@ -215,6 +227,13 @@ const EditPhone = (props) => {
         Edit Phone
       </Button>
     </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    
   );
 };
 

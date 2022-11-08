@@ -1,0 +1,47 @@
+.adminpanel{
+position: absolute;
+left: 42.15%;
+right: 36.88%;
+top: 11.23%;
+bottom: 82.81%;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 40x;
+line-height: 61px;
+color: #4DB6AC;
+}
+
+.button1{
+position: absolute;
+left: 4.1%;
+right: 81.53%;
+top: 13.09%;
+bottom: 81.15%;
+
+background: rgba(21, 85, 121, 0.96);
+border-radius: 20px;
+color: white;
+font-size: 20px;
+}
+
+.alertstyle{
+padding-top: 8%;
+padding-left: 4%;
+left: 3.82%;
+right: 56.32%;
+top: 21.09%;
+bottom: 73.44%;
+
+
+
+}
+
+.alertstylecontent{
+    background: rgba(76, 216, 202, 0.35);
+    border-radius: 5px;
+    width: 40%;
+    height: 40%;
+}
+
+

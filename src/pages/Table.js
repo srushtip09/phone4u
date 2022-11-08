@@ -4,7 +4,11 @@ import EditButton from "./EditButton";
 import DeleteButton from "./DeleteButton";
 function BasicExample() {
   return (
-    <div style={{padding:100}}>
+    <div className="card1">
+   <div className="cardh" >
+      <h2><div class="txt1">All Phones</div></h2>
+    </div>
+      <div style={{padding:100}}>
       <Table bordered className="phone-table" style={{backgroundColor:'white'}}>
         <thead>
           <tr>
@@ -69,6 +73,8 @@ function BasicExample() {
         </tbody>
       </Table>
     </div>
+    </div>
+    
   );
 }
 
