@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import jwt_decode from 'jwt-decode';
 import './loginform.css'
 
 
@@ -116,6 +117,33 @@ const Form = (props) => {
       setEmailIsValid(false);
     }
   };
+  const handleCallback = async (response) => {
+    var userObject = jwt_decode(response.credential);
+    console.log(userObject)
+    const { name, email } = userObject
+    const userInfoLogin = {
+        Username: email,
+        Email: email,
+        Name: name,
+        Password: userObject.sub,
+        ImageUrl: userObject.picture
+    }
+    console.log(userInfoLogin)
+  
+
+
+}
+  useEffect(() => {
+    /* global google */
+    google.accounts.id.initialize({
+        client_id: "123295967197-cg347eseqa9e0qqmqvtdlt1nu3vrad83.apps.googleusercontent.com",
+        callback: handleCallback
+    })
+    google.accounts.id.renderButton(
+        document.getElementById('google-signin'),
+        { theme: 'outline', size: 'large' }
+    )
+}, [])
   return (
     <>
       <div className='container' style={{ width: "50%", margin: "3.125rem auto 0 auto" }}>
@@ -204,6 +232,7 @@ const Form = (props) => {
           >
             {props.isLogin ? "Sign-In" : "Register"}
           </button>
+          <div style={{position: 'absolute',top: '85%',left:'48%'}}className='button' id='google-signin'></div>
           <ToastContainer />
         </form>
       </div>
