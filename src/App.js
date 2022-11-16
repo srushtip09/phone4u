@@ -5,11 +5,14 @@ import Table from './pages/Table'
 import { Route } from 'react-router-dom';
 import EditPhone from './pages/EditPhone'
 import AddPhone from './pages/AddPhone'
-import Navbar from './Components/navbar'
+import Navbar from './Components/Navbar'
 import Admin from './pages/Admin'
 import LoginForm from './pages/LoginForm';
 import { Nav } from 'react-bootstrap';
+
+
 const id = "635edd828bcb20d902fe4643";
+
 
 function App() {
 
@@ -17,6 +20,7 @@ function App() {
   return (
 
     <div>
+      <Navbar/>
      
        {/* <Route path="/Edit" exact>
         <EditPhone/>

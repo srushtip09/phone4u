@@ -1,5 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import './loginform.css'
+
 
 import axios from "axios";
 const Form = (props) => {
@@ -116,64 +118,68 @@ const Form = (props) => {
   };
   return (
     <>
-      <div>
+      <div className='container' style={{ width: "50%", margin: "3.125rem auto 0 auto" }}>
+        <div className='form-title'><h2>ADMIN LOGIN</h2></div>
         <form
-          className="flex flex-col w-[90%] rounded-t-2xl"
+          className='form'
           onSubmit={submitHandler}
         >
           {!props.isLogin && (
             <>
-              <label htmlFor="name" className="text-slate-800 font-semibold">
-                Full Name<span className="mx-1 text-red-600">*</span>
+            <div class="form-group">
+              <label htmlFor="name" className="form-question" style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0'}}>
+                Full Name
               </label>
               <input
                 id="name"
                 name="name"
-                className="my-3 mb-1 border border-slate-800 rounded-md bg-slate-100 px-2 py-1"
+                className="form-control"
                 type="text"
                 placeholder="Enter full name"
                 value={name}
                 onChange={nameHandler}
                 onBlur={() => setNameIsBlur(true)}
-              ></input>
+              ></input></div>
             </>
           )}
           {!nameIsValid && nameIsBlur && !props.isLogin && (
-            <p className="text-red-600 text-sm mb-1 ">
-              Cannot leave feild empty
+            <p>
+              Cannot leave field empty
             </p>
           )}
-          <label htmlFor="email" className="text-slate-800 font-semibold">
-            Email<span className="mx-1 text-red-600">*</span>
+          <div class="form-group">
+          <label htmlFor="email" className="form-question" style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0'}}>
+            Email
           </label>
           <input
             id="email"
             name="email"
-            className="my-3 border border-slate-800 rounded-md bg-slate-100 px-2 py-1"
+            className="form-control"
             type="email"
             placeholder="Enter email"
             value={email}
             onChange={emailHandler}
             onBlur={() => setEmailIsBlur(true)}
-          ></input>
+          ></input></div>
           {!emailIsValid && emailIsBlur && (
-            <p className="text-red-600 text-sm mb-1 ">Include an @ in email</p>
+            <p>Include an @ in email</p>
           )}
-          <label htmlFor="password" className="text-slate-800 font-semibold">
-            Password<span className="mx-1 text-red-600">*</span>
+          <div className="form-group">
+          <label htmlFor="password" className="form-question" style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0'}}>
+            Password
           </label>
           <input
             id="password"
             name="password"
-            className="my-3 border border-slate-800 rounded-md bg-slate-100 px-2 py-1"
+            className="form-control"
             type="password"
             placeholder="Enter password"
             value={password}
             onChange={passwordHandler}
             onBlur={() => setPaswordIsBlur(true)}
-          ></input>
+          ></input></div>
           {!passwordIsValid && passwordIsBlur && (
-            <p className="text-red-600 text-sm mb-1 ">
+            <p>
               Minimum 7 characters needed
             </p>
           )}
@@ -182,17 +188,19 @@ const Form = (props) => {
             className={
               !props.isLogin
                 ? nameIsValid && emailIsValid && passwordIsValid
-                  ? "rounded-3xl bg-blue-500 text-white py-[4px] px-2 mt-3 w-[70%] ml-12"
-                  : "rounded-3xl bg-slate-300 text-white py-[4px] px-2 mt-3 w-[70%] ml-12"
+                  ? "submit-button"
+                  : "submit-button"
                 : emailIsValid && passwordIsValid
-                ? "rounded-3xl bg-blue-500 text-white py-[4px] px-2 mt-3 w-[70%] ml-12"
-                : "rounded-3xl bg-slate-300 text-white py-[4px] px-2 mt-3 w-[70%] ml-12"
+                ? "submit-button"
+                : "submit-button" 
             }
             disabled={
               !props.isLogin
                 ? !(nameIsValid && emailIsValid && passwordIsValid)
                 : !(emailIsValid && passwordIsValid)
             }
+            style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0'}}
+
           >
             {props.isLogin ? "Sign-In" : "Register"}
           </button>

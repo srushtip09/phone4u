@@ -1,6 +1,7 @@
 import { Card } from "react-bootstrap";
 import LoginForm from "./LoginForm";
-
+import Navbar from '../Components/navbar'
+//import './loginform.css'
 
 const Index = () => {
   return (
