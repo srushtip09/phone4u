@@ -5,8 +5,9 @@ import Button from "../Components/Addphone/Button";
 import { VALIDATOR_REQUIRE } from "../Components/Addphone/validators";
 import { useForm } from "../Components/hooks/forms";
 import axios from "axios";
+import { propTypes } from "react-bootstrap/esm/Image";
 
-const NewPhone = () => {
+const NewPhone = (props) => {
   const [formState, inputHandler] = useForm(
     {
       name: {
@@ -73,7 +74,7 @@ const NewPhone = () => {
   //   // console.log(updatedphone)
 
   // }
-
+  
   const phoneSubmitHandler = async (event) => {
     event.preventDefault();
     try {
@@ -83,11 +84,14 @@ const NewPhone = () => {
         price: formState.inputs.price.value,
         portfolio: formState.inputs.portfolio.value,
         brand: formState.inputs.brand.value,
+      }).then(()=>{
+        props.closeHandler()
       });
       console.log(result.data);
     } catch (err) {
       console.log(err);
     }
+   
     //console.log("not done")
     // const updatedphone = await result.JSON().phone
     // console.log(updatedphone)

@@ -3,49 +3,23 @@ import "./Table.css";
 import EditButton from "./EditButton";
 import DeleteButton from "./DeleteButton";
 import PhoneRow from "../Components/PhoneRow";
-const phone=[
-  {
-    id:"01",
-    name:"One Plus Nord",
-    brand:"One Plus",
-    image:"/url",
-    portfolio:"One Plus Nord 5,128GB",
-    price:"55000"
-  },
-  {
-    id:"02",
-    name:"One Plus Nord",
-    brand:"One Plus",
-    image:"/url",
-    portfolio:"One Plus Nord 5,128GB",
-    price:"55000"
-  },
-  {
-    id:"03",
-    name:"One Plus Nord",
-    brand:"One Plus",
-    image:"/url",
-    portfolio:"One Plus Nord 5,128GB",
-    price:"55000"
-  },
-  {
-    id:"04",
-    name:"One Plus Nord",
-    brand:"One Plus",
-    image:"/url",
-    portfolio:"One Plus Nord 5,128GB",
-    price:"55000"
-  },
-  {
-    id:"05",
-    name:"One Plus Nord",
-    brand:"One Plus",
-    image:"/url",
-    portfolio:"One Plus Nord 5,128GB",
-    price:"55000"
-  }
-]
+import axios from "axios";
+import { useEffect, useState } from "react";
 function BasicExample(props) {
+  const [phone,setPhone]=useState([])
+  const fetchAllPhones=async()=>{
+    const result=await axios.get('http://localhost:5000/api/phones')
+    setPhone(result.data.phones)
+
+  }
+  useEffect(()=>{
+    if(!props.showModal)
+    fetchAllPhones();
+   
+
+
+  },[props.showModal])
+  
   return (
     <div className="flex flex-col justify-center items-center  w-[95%] my-10 rounded-tl-lg h-fit border-b-2 border-l-2 border-r-2 border-[#113448] rounded-br-2xl">
       <div className="p-0 w-full">
@@ -65,7 +39,7 @@ function BasicExample(props) {
             <div className="w-[15%] text-center" >Actions</div>
           </div>
         </div>
-        {phone.length>0 && phone.map((phone)=> <PhoneRow {...phone} editHandler={props.editHandler}></PhoneRow>)}
+        {phone && phone.length>0 &&phone.map((phone,i)=> <PhoneRow {...phone} index={i+1} fetchPhones={fetchAllPhones}editHandler={props.editHandler}></PhoneRow>)}
 
       </div>
     </div>

@@ -7,6 +7,7 @@ import EditPhone from './pages/EditPhone'
 import AddPhone from './pages/AddPhone'
 import Navbar from './Components/navbar'
 import Admin from './pages/Admin'
+import LoginForm from './pages/LoginForm';
 import { Nav } from 'react-bootstrap';
 const id = "635edd828bcb20d902fe4643";
 
@@ -22,8 +23,8 @@ function App() {
       </Route>  */}
       {/* <Navbar/>
       <Admin/> */}
-      <Navbar/>
-      <Admin/>
+      <LoginForm></LoginForm>
+     
 
     </div>
 

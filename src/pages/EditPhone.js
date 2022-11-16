@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 //import { useParams } from "react-router-dom";
 
 import Input from "../Components/Addphone/Input";
@@ -41,8 +41,7 @@ const DUMMY_PHONES = [
 
 const EditPhone = (props) => {
   const phoneId = props.id;
-  console.log("props",props.id)
-  console.log("phone",phoneId)
+  const [identifiedPhone,setIdentifiedPhone]=useState()
   //  const phoneId = useParams().phoneId;
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -74,12 +73,18 @@ const EditPhone = (props) => {
     },
     false
   );
-  let identifiedPhone;
+
   const getPhoneData = async () => {
     //const result = await fetch('http://localhost:5000/api/phones/'+"635edd828bcb20d902fe4643");
-    const result = await axios.get("http://localhost:5000/api/phones/")
-    identifiedPhone = await result.json().phone;
-    console.log(identifiedPhone)
+    const result = await axios.get(`http://localhost:5000/api/phones/${props.id}`)
+    setIdentifiedPhone(result.data.phone)
+    
+   
+  };
+  useEffect(()=>{
+    
+    if(identifiedPhone){
+      console.log(identifiedPhone)
     setFormData(
       {
         name: {
@@ -105,7 +110,8 @@ const EditPhone = (props) => {
       },
       true
     );
-  };
+    }
+  },[identifiedPhone])
 
   const postPhoneData =async()=>{
   console.log("form");
@@ -132,7 +138,7 @@ const EditPhone = (props) => {
   }
   useEffect(() => {
     getPhoneData();
-  }, [getPhoneData]);
+  }, []);
 
   const phoneEditsubmitHandler = (event) => {
     event.preventDefault();
