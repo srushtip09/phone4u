@@ -23,7 +23,7 @@ function App() {
       {/* <Navbar/>
       <Admin/> */}
       <Navbar/>
-      <EditPhone/>
+      <Admin/>
 
     </div>
 

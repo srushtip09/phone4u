@@ -158,12 +158,12 @@ const EditPhone = (props) => {
   //   );
   // }
   return (
-    <div className="container">
-    <div className="row">
+    <div className=" z-50 absolute top-[10%] left-[15%] w-[70%] ">
+    <div className="">
     <div className="col-md-12">
       <div className="card1">
     <div className="cardh" >
-      <h2><div className="txt1">Edit Phone</div></h2>
+      <h2><div className="text-4xl  text-white py-3 px-4">Edit Phone</div></h2>
     </div>
     <div>
     <div className="card-body">
