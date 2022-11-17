@@ -5,10 +5,13 @@ import './loginform.css'
 
 
 import axios from "axios";
+import {useNavigate} from "react-router-dom"
+
 const Form = (props) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate()
   const [emailIsValid, setEmailIsValid] = useState(false);
   const [nameIsValid, setNameIsValid] = useState(false);
   const [passwordIsValid, setPaswordIsValid] = useState(false);
@@ -66,6 +69,11 @@ const Form = (props) => {
             name: name,
             email: email,
             password: password,
+          }).then(()=>{
+            console.log("hello")
+            navigate('/admin')
+          }).catch((error)=>{
+
           });
         } else {
           toast.error("Authentication Failed !", {
