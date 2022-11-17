@@ -1,13 +1,13 @@
 import { useEffect, useState, useContext } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
-//import {useHistory} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 
 const Form = (props) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  //const history = useHistory()
+  const navigate = useNavigate()
   const [emailIsValid, setEmailIsValid] = useState(false);
   const [nameIsValid, setNameIsValid] = useState(false);
   const [passwordIsValid, setPaswordIsValid] = useState(false);
@@ -66,7 +66,8 @@ const Form = (props) => {
             email: email,
             password: password,
           }).then(()=>{
-            //history.push('/')
+            console.log("hello")
+            navigate('/admin')
           }).catch((error)=>{
 
           });
