@@ -1,11 +1,13 @@
 import { useEffect, useState, useContext } from "react";
 import { toast, ToastContainer } from "react-toastify";
-
 import axios from "axios";
+//import {useHistory} from "react-router-dom"
+
 const Form = (props) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  //const history = useHistory()
   const [emailIsValid, setEmailIsValid] = useState(false);
   const [nameIsValid, setNameIsValid] = useState(false);
   const [passwordIsValid, setPaswordIsValid] = useState(false);
@@ -63,6 +65,10 @@ const Form = (props) => {
             name: name,
             email: email,
             password: password,
+          }).then(()=>{
+            //history.push('/')
+          }).catch((error)=>{
+
           });
         } else {
           toast.error("Authentication Failed !", {
