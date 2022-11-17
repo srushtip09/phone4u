@@ -171,7 +171,7 @@ const Form = (props) => {
             </>
           )}
           {!nameIsValid && nameIsBlur && !props.isLogin && (
-            <p>
+            <p style={{  display: "flex", alignItems: "center", fontSize: "1", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '0.8', color: 'white', margin: '0'}} >
               Cannot leave field empty
             </p>
           )}
@@ -190,7 +190,7 @@ const Form = (props) => {
             onBlur={() => setEmailIsBlur(true)}
           ></input></div>
           {!emailIsValid && emailIsBlur && (
-            <p>Include an @ in email</p>
+            <p style={{  display: "flex", alignItems: "center", fontSize: "1rem",  fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '0.8', color: 'white', margin: '0'}}>Include an @ in email</p>
           )}
           <div className="form-group">
           <label htmlFor="password" className="form-question" style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0'}}>
@@ -207,10 +207,11 @@ const Form = (props) => {
             onBlur={() => setPaswordIsBlur(true)}
           ></input></div>
           {!passwordIsValid && passwordIsBlur && (
-            <p>
+            <p style={{  display: "flex", alignItems: "center", fontSize: "1rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '0.8', color: 'white', margin: '0', paddingBottom:'10px'}}>
               Minimum 7 characters needed
             </p>
           )}
+          <div className='buttons' style={{display:'flex', paddingLeft:'27%'}}>
           <button
             type="submit"
             className={
@@ -230,9 +231,10 @@ const Form = (props) => {
             style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0'}}
 
           >
-            {props.isLogin ? "Sign-In" : "Register"}
+            {props.isLogin ? "Sign-In" : "Sign-In"}
           </button>
-          <div style={{position: 'absolute',top: '85%',left:'48%'}}className='button' id='google-signin'></div>
+          <div style={{paddingLeft:'20px'}} className='button' id='google-signin'></div>
+          </div>
           <ToastContainer />
         </form>
       </div>
