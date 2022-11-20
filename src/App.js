@@ -5,7 +5,7 @@ import Table from "./pages/Table";
 import { Route,Routes } from "react-router-dom";
 import EditPhone from "./pages/EditPhone";
 import AddPhone from "./pages/AddPhone";
-import Navbar from "./Components/navbar";
+import Navbar from "./Components/Navbar";
 import Admin from "./pages/Admin";
 import LoginForm from "./pages/LoginForm";
 import { Nav } from "react-bootstrap";
@@ -16,9 +16,12 @@ function App() {
   return (
     <div>
     <Navbar/>
+    <LoginForm></LoginForm>
+  
     <Routes>
-      <Route path='/' element={<LoginForm/>}/>
-      <Route path='/admin' element={<><Admin/></>} />
+    
+      <Route path='/' element={<LoginForm></LoginForm>}/>
+      <Route path='/admin' element={<Admin></Admin>} />
     </Routes>
     </div>
   );

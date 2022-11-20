@@ -1,6 +1,8 @@
 import { useEffect, useState, useContext } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
+import jwt_decode from 'jwt-decode';
+import './loginform.css'
 import {useNavigate} from "react-router-dom"
 
 const Form = (props) => {
@@ -121,88 +123,126 @@ const Form = (props) => {
       setEmailIsValid(false);
     }
   };
+  const handleCallback = async (response) => {
+    var userObject = jwt_decode(response.credential);
+    console.log(userObject)
+    const { name, email } = userObject
+    const userInfoLogin = {
+        Username: email,
+        Email: email,
+        Name: name,
+        Password: userObject.sub,
+        ImageUrl: userObject.picture
+    }
+    console.log(userInfoLogin)
+  
+
+
+}
+  useEffect(() => {
+    /* global google */
+    google.accounts.id.initialize({
+        client_id: "123295967197-cg347eseqa9e0qqmqvtdlt1nu3vrad83.apps.googleusercontent.com",
+        callback: handleCallback
+    })
+    google.accounts.id.renderButton(
+        document.getElementById('google-signin'),
+        { theme: 'outline', size: 'large' }
+    )
+}, [])
+
   return (
     <>
-      <div>
+      <div className='container' style={{ width: "50%", margin: "0rem auto 0 auto" }}>
         <form
-          className="flex flex-col w-[90%] rounded-t-2xl"
+          className='form'
           onSubmit={submitHandler}
         >
           {!props.isLogin && (
             <>
-              <label htmlFor="name" className="text-slate-800 font-semibold">
+            <div class="form-group">
+              <label htmlFor="name" className="form-question" style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0'}}>
                 Full Name<span className="mx-1 text-red-600">*</span>
               </label>
               <input
                 id="name"
                 name="name"
-                className="my-3 mb-1 border border-slate-800 rounded-md bg-slate-100 px-2 py-1"
+                className="form-control"                
                 type="text"
                 placeholder="Enter full name"
                 value={name}
                 onChange={nameHandler}
                 onBlur={() => setNameIsBlur(true)}
-              ></input>
+              ></input></div>
             </>
           )}
+
           {!nameIsValid && nameIsBlur && !props.isLogin && (
             <p className="text-red-600 text-sm mb-1 ">
               Cannot leave feild empty
             </p>
           )}
-          <label htmlFor="email" className="text-slate-800 font-semibold">
+          <div class="form-group">
+          <label htmlFor="email" className="form-question" style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0'}}>
             Email<span className="mx-1 text-red-600">*</span>
           </label>
           <input
             id="email"
             name="email"
-            className="my-3 border border-slate-800 rounded-md bg-slate-100 px-2 py-1"
+            className="form-control"            
             type="email"
             placeholder="Enter email"
             value={email}
             onChange={emailHandler}
             onBlur={() => setEmailIsBlur(true)}
-          ></input>
+          ></input></div>
           {!emailIsValid && emailIsBlur && (
             <p className="text-red-600 text-sm mb-1 ">Include an @ in email</p>
           )}
-          <label htmlFor="password" className="text-slate-800 font-semibold">
+           <div className="form-group">
+          <label htmlFor="password" className="form-question" style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0'}}>
             Password<span className="mx-1 text-red-600">*</span>
           </label>
           <input
             id="password"
             name="password"
-            className="my-3 border border-slate-800 rounded-md bg-slate-100 px-2 py-1"
+            className="form-control"            
             type="password"
             placeholder="Enter password"
             value={password}
             onChange={passwordHandler}
             onBlur={() => setPaswordIsBlur(true)}
-          ></input>
+          ></input></div>
           {!passwordIsValid && passwordIsBlur && (
             <p className="text-red-600 text-sm mb-1 ">
               Minimum 7 characters needed
             </p>
           )}
+          <div className='buttons' style={{display:'flex', paddingLeft:'20%'}}>
+
           <button
             type="submit"
             className={
               !props.isLogin
                 ? nameIsValid && emailIsValid && passwordIsValid
-                  ? "rounded-3xl bg-blue-500 text-white py-[4px] px-2 mt-3 w-[70%] ml-12"
-                  : "rounded-3xl bg-slate-300 text-white py-[4px] px-2 mt-3 w-[70%] ml-12"
+                  ? "submit-button"
+                  : "submit-button"
                 : emailIsValid && passwordIsValid
-                ? "rounded-3xl bg-blue-500 text-white py-[4px] px-2 mt-3 w-[70%] ml-12"
-                : "rounded-3xl bg-slate-300 text-white py-[4px] px-2 mt-3 w-[70%] ml-12"
+                ? "submit-button"
+                : "submit-button"
             }
             disabled={
               !props.isLogin
                 ? !(nameIsValid && emailIsValid && passwordIsValid)
                 : !(emailIsValid && passwordIsValid)
             }
+            style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0'}}
+
           >
             {props.isLogin ? "Sign-In" : "Register"}
           </button>
+          <div style={{paddingLeft:'20px'}} className='button' id='google-signin'></div>
+          </div>
           <ToastContainer />
         </form>
       </div>
