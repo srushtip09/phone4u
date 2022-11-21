@@ -128,7 +128,7 @@ button {
     margin: 0 auto;
     color :whitesmoke;
     text-shadow: 2px 2px 8px #000;
-    padding-bottom: 10%;
+    padding-bottom: 1%;
 }
 .form-message h3{
     font-size: 2.75rem;
@@ -154,10 +154,6 @@ form {
     margin: 1rem 0;
 }
 
-.form-group {
-
-  
-}
 
 .form-control {
   display: block;

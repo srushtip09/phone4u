@@ -5,6 +5,8 @@ import './loginform.css'
 
 
 import axios from "axios";
+import jwt_decode from 'jwt-decode';
+import './loginform.css'
 import {useNavigate} from "react-router-dom"
 
 const Form = (props) => {
@@ -152,10 +154,10 @@ const Form = (props) => {
         { theme: 'outline', size: 'large' }
     )
 }, [])
+
   return (
     <>
-      <div className='container' style={{ width: "50%", margin: "3.125rem auto 0 auto" }}>
-        <div className='form-title'><h2>ADMIN LOGIN</h2></div>
+      <div className='container' style={{ width: "50%", margin: "0rem auto 0 auto" }}>
         <form
           className='form'
           onSubmit={submitHandler}
@@ -164,12 +166,12 @@ const Form = (props) => {
             <>
             <div class="form-group">
               <label htmlFor="name" className="form-question" style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0'}}>
-                Full Name
+                Full Name<span className="mx-1 text-red-600">*</span>
               </label>
               <input
                 id="name"
                 name="name"
-                className="form-control"
+                className="form-control"                
                 type="text"
                 placeholder="Enter full name"
                 value={name}
@@ -178,6 +180,7 @@ const Form = (props) => {
               ></input></div>
             </>
           )}
+
           {!nameIsValid && nameIsBlur && !props.isLogin && (
             <p style={{  display: "flex", alignItems: "center", fontSize: "1", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '0.8', color: 'white', margin: '0'}} >
               Cannot leave field empty
@@ -185,12 +188,12 @@ const Form = (props) => {
           )}
           <div class="form-group">
           <label htmlFor="email" className="form-question" style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0'}}>
-            Email
+            Email<span className="mx-1 text-red-600">*</span>
           </label>
           <input
             id="email"
             name="email"
-            className="form-control"
+            className="form-control"            
             type="email"
             placeholder="Enter email"
             value={email}
@@ -200,14 +203,14 @@ const Form = (props) => {
           {!emailIsValid && emailIsBlur && (
             <p style={{  display: "flex", alignItems: "center", fontSize: "1rem",  fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '0.8', color: 'white', margin: '0'}}>Include an @ in email</p>
           )}
-          <div className="form-group">
+           <div className="form-group">
           <label htmlFor="password" className="form-question" style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0'}}>
-            Password
+            Password<span className="mx-1 text-red-600">*</span>
           </label>
           <input
             id="password"
             name="password"
-            className="form-control"
+            className="form-control"            
             type="password"
             placeholder="Enter password"
             value={password}
@@ -219,7 +222,8 @@ const Form = (props) => {
               Minimum 7 characters needed
             </p>
           )}
-          <div className='buttons' style={{display:'flex', paddingLeft:'27%'}}>
+          <div className='buttons' style={{display:'flex', paddingLeft:'20%'}}>
+
           <button
             type="submit"
             className={
@@ -229,7 +233,7 @@ const Form = (props) => {
                   : "submit-button"
                 : emailIsValid && passwordIsValid
                 ? "submit-button"
-                : "submit-button" 
+                : "submit-button"
             }
             disabled={
               !props.isLogin
