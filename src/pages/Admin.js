@@ -13,7 +13,10 @@ const Admin = () => {
   const [visible, setVisible] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [Modal,setModal]=useState(false)
-
+  const editHandler = () => {
+    setModal(true);
+  };
+  
     
   return (
     <>
