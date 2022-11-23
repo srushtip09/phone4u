@@ -18,7 +18,7 @@ function App() {
     <div>
     <Navbar/>
     <Routes>
-      <Route path='/phone4u' element={<LoginForm></LoginForm>}/>
+      <Route path='/' element={<LoginForm></LoginForm>}/>
       <Route path='/admin' element={<Admin></Admin>} />
     </Routes>
     </div>
