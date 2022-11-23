@@ -31,7 +31,7 @@ const Admin = () => {
       {showModal && <NewPhone closeHandler={closeHandler}></NewPhone>}
       {Modal && <BackDrop onClick={() => setModal(false)}></BackDrop>}
       {Modal && <EditPhone id={phoneId}></EditPhone>}
-      <div className={showModal && "h-[100vh] overflow-hidden"}style={{backgroundColor:'white',height:'100vh',width:'100%'}}>
+      <div className={showModal && "h-[100vh]"}style={{backgroundColor:'white', height:'100%',width:'100%'}}>
         <div>
           <h1>
             <div class=" text-[Nunito] font-semibold text-teal-500 text-center text-4xl ">
@@ -67,6 +67,7 @@ const Admin = () => {
           <Table editHandler={editHandler} showModal={showModal} />
         </div>
       </div>
+     
     </>
     
   );

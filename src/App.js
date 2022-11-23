@@ -17,11 +17,8 @@ function App() {
   return (
     <div>
     <Navbar/>
-    <LoginForm></LoginForm>
-  
     <Routes>
-    
-      <Route path='/' element={<LoginForm></LoginForm>}/>
+      <Route path='/phone4u' element={<LoginForm></LoginForm>}/>
       <Route path='/admin' element={<Admin></Admin>} />
     </Routes>
     </div>
