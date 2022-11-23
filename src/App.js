@@ -5,7 +5,7 @@ import Table from "./pages/Table";
 import { Route,Routes } from "react-router-dom";
 import EditPhone from "./pages/EditPhone";
 import AddPhone from "./pages/AddPhone";
-import Navbar from "./Components/Navbar";
+import Navbar from "./Components/navbar";
 import Admin from "./pages/Admin";
 import LoginForm from "./pages/LoginForm";
 import { Nav } from "react-bootstrap";
