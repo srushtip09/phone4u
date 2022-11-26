@@ -16,11 +16,11 @@ const id = "635edd828bcb20d902fe4643";
 function App() {
   return (
     <div>
+     
     <Navbar/>
-    <Routes>
-      <Route path='/phone4u' element={<LoginForm></LoginForm>}/>
-      <Route path='/admin' element={<Admin></Admin>} />
-    </Routes>
+    <Admin></Admin>
+    
+   
     </div>
   );
 }

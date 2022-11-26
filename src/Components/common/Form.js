@@ -157,7 +157,6 @@ const Form = (props) => {
 
   return (
     <>
-   
       <div className='container' style={{ width: "50%", margin: "0rem auto 0 auto" }}>
         <form
           className='form'
@@ -251,6 +250,7 @@ const Form = (props) => {
           <ToastContainer />
         </form>
       </div>
+    
     </>
   );
 };

@@ -8,8 +8,9 @@ const LoginForm = (props) => {
    const [isLogin,setisLogin]=useState(false)
   
   return (
+    <body>
     <div className="container"style={{width:'100%'}}>
-            <div className='form-title' style={{padingBottom:'0px'}}><h2>ADMIN LOGIN</h2></div>
+            <div className='form-title' style={{padingBottom:'0px',paddingTop:'30px'}}><h2>ADMIN LOGIN</h2></div>
 
       <div className="flex justify-around mt-2 bg-slate-100 rounded-t-md "style={{backgroundColor:'#113448',width:'44%',marginLeft:'28%'}}>
         <span className={!isLogin?`py-3 font-bold cursor-pointer `:`py-3 font-bold cursor-pointer`} style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0'}} onClick={()=>{setisLogin(false)}} >Sign-Up</span>
@@ -22,7 +23,7 @@ const LoginForm = (props) => {
      </div>
 
     </div>
-    
+    </body>
   );
 };
 export default LoginForm
