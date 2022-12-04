@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+D:\phone4u\testerfiles\.metadata\.plugins\org.eclipse.jdt.core

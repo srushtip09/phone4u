@@ -186,7 +186,7 @@ const EditPhone = (props) => {
                     onInput={inputHandler}
                     value={formState.inputs.name.value}
                     valid={formState.inputs.name.isValid}
-                  ></Input>a
+                  ></Input>
                   <Input
                     id="image"
                     element="input"
@@ -231,8 +231,8 @@ const EditPhone = (props) => {
                     value={formState.inputs.brand.value}
                     valid={formState.inputs.brand.isValid}
                   ></Input>
-                  <Button type="Submit" disabled={!formState.isValid}>
-                    Edit Phone
+                  <Button type="Submit">
+                  <span className="me"> Edit Phone</span>
                   </Button>
                 </form>
               </div>

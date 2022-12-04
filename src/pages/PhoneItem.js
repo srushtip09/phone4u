@@ -14,8 +14,8 @@ const PhoneItem = props => {
         </div>
         <div className="phone-item__actions">
           <button>VIEW ON MAP</button>
-          <button>EDIT</button>
-          <button>DELETE</button>
+          <button id="edit">EDIT</button>
+          <button id="delete">DELETE</button>
         </div>
       </Card>
     </li>

@@ -1,6 +1,6 @@
 import React from "react";
 import Input from "../Components/Addphone/Input";
-import "./PhoneForm.css";
+import styles from "./PhoneForm.css";
 import Button from "../Components/Addphone/Button";
 import { VALIDATOR_REQUIRE } from "../Components/Addphone/validators";
 import { useForm } from "../Components/hooks/forms";
@@ -159,12 +159,8 @@ const NewPhone = (props) => {
                     errorText="Please enter a valid input"
                     onInput={inputHandler}
                   ></Input>
-                  <Button
-            
-                    type="Submit"
-                    disabled={!formState.isValid}
-                  >
-                    Add Phone
+                  <Button type="Submit" >
+                    <span className="mr "> Add Phone</span>
                   </Button>
                 </form>
               </div>

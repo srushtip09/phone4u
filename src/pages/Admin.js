@@ -27,7 +27,8 @@ const Admin = () => {
     
   return (
     <>
-      {showModal && <BackDrop onClick={() => setShowModal(false)}></BackDrop>}
+    <body style={{backgroundColor:"white"}}>
+      {/* {showModal && <BackDrop onClick={() => setShowModal(false)}></BackDrop>} */}
       {showModal && <NewPhone closeHandler={closeHandler}></NewPhone>}
       {Modal && <BackDrop onClick={() => setModal(false)}></BackDrop>}
       {Modal && <EditPhone id={phoneId}></EditPhone>}
@@ -57,6 +58,7 @@ const Admin = () => {
             </div>
           )}
           <button
+            id="add"
             className="bg-[#113448] text-white  text-xl px-3 py-2 font-semibold rounded-md  items-baseline flex "
             onClick={() => setShowModal(true)}
           >
@@ -67,6 +69,7 @@ const Admin = () => {
           <Table editHandler={editHandler} showModal={showModal} />
         </div>
       </div>
+      </body>
     </>
     
   );

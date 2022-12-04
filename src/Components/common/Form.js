@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import jwt_decode from 'jwt-decode';
-import './loginform.css'
+import styles from './loginform.css'
 import {useNavigate} from "react-router-dom"
 
 const Form = (props) => {
@@ -139,40 +139,50 @@ const Form = (props) => {
 
 
 }
-  useEffect(() => {
-    /* global google */
-    google.accounts.id.initialize({
-        client_id: "123295967197-cg347eseqa9e0qqmqvtdlt1nu3vrad83.apps.googleusercontent.com",
-        callback: handleCallback
-    })
-    google.accounts.id.renderButton(
-        document.getElementById('google-signin'),
-        { theme: 'outline', size: 'large' }
-    )
-}, [])
+ 
 
   return (
     <>
-      <div className='container' style={{ width: "50%", margin: "0rem auto 0 auto" }}>
+    <div style={{
+      backgroundImage: "url(src/pages/form-bg-final2.jfif)",
+      height: "300px",
+      backgroundRepeat: "no-repeat"
+    }} >
+      <div className={styles.container} style={{ width: "50%", margin: "0rem auto 0 auto"}}>
         <form
-          className='form'
+          className={styles.form}
           onSubmit={submitHandler}
+          style={{backgroundColor: "#113448e3",
+            padding: "2.5rem 0.625rem",
+            borderRadius: "0.25rem"}}
         >
           {!props.isLogin && (
             <>
-            <div class="form-group">
-              <label htmlFor="name" className="form-question" style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0'}}>
+            <div className={styles.formgroup} style={{}}>
+              <label htmlFor="name" className={styles.formquestion} style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0',paddingTop:"10px"}}>
                 Full Name<span className="mx-1 text-red-600">*</span>
               </label>
               <input
                 id="name"
-                name="name"
-                className="form-control"                
+             
+                className={styles.formcontrol}          
                 type="text"
                 placeholder="Enter full name"
                 value={name}
                 onChange={nameHandler}
                 onBlur={() => setNameIsBlur(true)}
+                style={{display: "block",
+                  width: "100%",
+                  height: "2.375rem",
+                  padding: "0.375rem 0.375rem",
+                  color: "#495057",
+                  backgroundColor: "#fff",
+                  backgroundClip: "padding-box",
+                  border: "1px solid #ced4da",
+                  borderRadius: "0.25rem",
+                  transition: "borderColor 0.15s ease-in-out, box-shadow 0.15s ease-in-out"}}
+              
+              
               ></input></div>
             </>
           )}
@@ -182,46 +192,67 @@ const Form = (props) => {
               Cannot leave feild empty
             </p>
           )}
-          <div class="form-group">
-          <label htmlFor="email" className="form-question" style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0'}}>
+          <div className={styles.formgroup}>
+          <label htmlFor="email" className={styles.formquestion} style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0',paddingTop:"10px"}}>
             Email<span className="mx-1 text-red-600">*</span>
           </label>
           <input
             id="email"
-            name="email"
-            className="form-control"            
+            
+            className={styles.formcontrol}            
             type="email"
             placeholder="Enter email"
             value={email}
             onChange={emailHandler}
             onBlur={() => setEmailIsBlur(true)}
+            style={{display: "block",
+                  width: "100%",
+                  height: "2.375rem",
+                  padding: "0.375rem 0.375rem",
+                  color: "#495057",
+                  backgroundColor: "#fff",
+                  backgroundClip: "padding-box",
+                  border: "1px solid #ced4da",
+                  borderRadius: "0.25rem",
+                  transition: "borderColor 0.15s ease-in-out, box-shadow 0.15s ease-in-out"}}
           ></input></div>
           {!emailIsValid && emailIsBlur && (
             <p className="text-red-600 text-sm mb-1 ">Include an @ in email</p>
           )}
-           <div className="form-group">
-          <label htmlFor="password" className="form-question" style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0'}}>
+           <div className={styles.formgroup}>
+          <label htmlFor="password" className={styles.formquestion} style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0',paddingTop:"10px"}}>
             Password<span className="mx-1 text-red-600">*</span>
           </label>
           <input
             id="password"
-            name="password"
-            className="form-control"            
+            
+            className={styles.formcontrol}            
             type="password"
             placeholder="Enter password"
             value={password}
             onChange={passwordHandler}
             onBlur={() => setPaswordIsBlur(true)}
+            style={{display: "block",
+                  width: "100%",
+                  height: "2.375rem",
+                  padding: "0.375rem 0.375rem",
+                  color: "#495057",
+                  backgroundColor: "#fff",
+                  backgroundClip: "padding-box",
+                  border: "1px solid #ced4da",
+                  borderRadius: "0.25rem",
+                  transition: "borderColor 0.15s ease-in-out, box-shadow 0.15s ease-in-out",
+                  }}
           ></input></div>
           {!passwordIsValid && passwordIsBlur && (
             <p className="text-red-600 text-sm mb-1 ">
               Minimum 7 characters needed
             </p>
           )}
-          <div className='buttons' style={{display:'flex', paddingLeft:'20%'}}>
+          <div className={styles.buttons} style={{display:'flex', paddingLeft:'40%',paddingTop:'20px'}}>
 
           <button
-            type="submit"
+            type="submit" id="login"
             className={
               !props.isLogin
                 ? nameIsValid && emailIsValid && passwordIsValid
@@ -231,21 +262,32 @@ const Form = (props) => {
                 ? "submit-button"
                 : "submit-button"
             }
-            disabled={
-              !props.isLogin
-                ? !(nameIsValid && emailIsValid && passwordIsValid)
-                : !(emailIsValid && passwordIsValid)
-            }
-            style={{  display: "flex", alignItems: "center", fontSize: "1.125rem", marginBottom: "0.5rem", fontFamily: 'Poppins, sans-serif', fontSize: '1rem', fontWeight: '400', lineHeight: '1.4', color: 'white', margin: '0'}}
-
+            
+            style={{display: "inline-block",
+            width: "auto",
+            padding: "0.75rem",
+            backgroundColor:"#13aa87",
+            color: "inherit",
+            borderRadius: "2px",
+            border: "solid 1.5px #13aa87",
+            cursor: "pointer",
+            position: "relative",
+            fontFamily: "Poppins, sans-serif",
+            fontSize: "1rem",
+            fontWeight: "400",
+            lineHeight: "1.4",
+            color: "white",
+            margin: "0"}}
           >
             {props.isLogin ? "Sign-In" : "Register"}
           </button>
-          <div style={{paddingLeft:'20px'}} className='button' id='google-signin'></div>
+          <div style={{position:'relative'}} className={styles.button} id='google-signin'></div>
           </div>
           <ToastContainer />
         </form>
       </div>
+      </div>
+ 
     </>
   );
 };

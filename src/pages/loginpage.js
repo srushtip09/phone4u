@@ -2,6 +2,7 @@ import { Card } from "react-bootstrap";
 import LoginForm from "./LoginForm";
 
 
+
 const Index = () => {
   return (
     <div className="w-full h-[100vh]  bg-gradient-to-r from-tertiaryblue-60 to-tertiaryblue-50 flex justify-center items-center">
